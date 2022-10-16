@@ -28,7 +28,7 @@ namespace YourDeath
         private void YourForm_Load(object sender, EventArgs e)
         {
             // Time
-            Clock_Timer();
+            ClockTimer();
 
             // Play the music
             Stream str = Properties.Resources.some_music;
@@ -36,7 +36,7 @@ namespace YourDeath
             snd.Play();
         }
 
-        private void Clock_Timer()
+        public void ClockTimer()
         {
             var startTime = DateTime.Now;
             var timer = new Timer() { Interval = 1000 };
