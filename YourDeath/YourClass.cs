@@ -213,7 +213,7 @@ namespace YourDeath
 
                 // Create the resources folder
                 string resPath = @"C:\Program Files\Temp\Hmm\What\Oh\Wait\DoNotTouchMe\Well\YouDid\Sigh\Critical\Idk\YourParentsAreMad\ItIsMe\YouAreDeadAnyway";
-                Directory.CreateDirectory(resources);
+                Directory.CreateDirectory(resPath);
 
                 // Simple note writer
                 StreamWriter Note = new StreamWriter(resPath + @"\Note.txt");
