@@ -31,9 +31,9 @@ namespace YourDeath
             ClockTimer();
 
             // Play the music
-            Stream str = Properties.Resources.some_music;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            Stream someSTR = Properties.Resources.some_music;
+            SoundPlayer someSND = new SoundPlayer(someSTR);
+            someSND.Play();
         }
 
         public void ClockTimer()
