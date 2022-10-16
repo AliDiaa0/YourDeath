@@ -18,7 +18,7 @@ namespace YourDeath
 {
     public class YourClass
     {
-        //DLL native imports for MBR (copied)
+        // DLL native imports for MBR (copied)
         [DllImport("kernel32")]
         private static extern IntPtr CreateFile(
             string lpFileName,
