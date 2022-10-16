@@ -1,7 +1,7 @@
 # YourDeath
-A C# computer virus (Windows-only) that can scare you, destroy your operating system, and delete your personal files.
+A stupid C# computer virus (Windows-only) that can scare kids, destroy your operating system, and delete your personal files.
 
-This virus is written by me. Please don't just copy and paste the source code as your own work. Copying/stealing people's work isn't nice. Please respect my code.
+This piece of junk is written by me. Please don't just copy and paste the source code as your own work. Copying / stealing people's work isn't nice. Please respect my code.
 
 There may be other versions of this virus in the future, I'm not sure.
 
